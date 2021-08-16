@@ -1,0 +1,27 @@
+{%extends 'accounts/main.html'%}
+{%load static%}
+{%block content%}
+<div class="card bg-dark">
+	<div class="card-header text-white">
+		Create Order
+	</div>
+	<div class="card-body text-white">
+		<h3 style="color: yellow;">Delete {{customer.name}} from database ?</h3>
+		<h4>Customer Details:</h4>
+		<div class="card card-body mb-2" style="color:black">
+			<h6><strong style="color:dimgray;"> Customer Name</strong>: {{customer.name}}</h6>
+			<h6><strong style="color:dimgray;">Customer Email </strong>: {{customer.email}}</h6>
+			<h6><strong style="color:dimgray;">Customer phone </strong>: {{customer.phone}}</h6>
+			<h6><strong style="color:dimgray;">Database Id </strong>: {{customer.id}}</h6>
+			<h6><strong style="color:dimgray;">Total orders </strong>: {{total_order}}</h6>
+		</div>
+		<form action="{% url 'delete_customer' customer.id %}" method="POST">
+			{%csrf_token%}
+			
+			<a class="btn btn-primary" href="{%url 'customer' customer.id%}">Cancel</a>
+			<input class="btn btn-danger" type="submit" name="Confirm" value="Confirm">
+			
+		</form>
+	</div>
+</div>
+{%endblock%}

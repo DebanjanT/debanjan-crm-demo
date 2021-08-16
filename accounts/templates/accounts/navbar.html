@@ -1,0 +1,22 @@
+{%load static%}
+<style type="text/css">
+	.logout{
+		margin-left: 1em;
+	}
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+	<img src="{% static 'images/sign.png'%}" width="300" height="40">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+			<a class="nav-item nav-link"style="color: #7CFC00" href="{%url 'dashboard_page'%}">Dashboard</a>
+			<a class="nav-item nav-link"style="color: #7CFC00" href="{%url 'product_page'%}">Products</a>
+			
+			
+		</div>
+	</div>
+	<span>Welcome, {{request.user}}</span>
+	<span><a href="{% url 'logout' %}" class="logout">🚪 Log Out</a></span>
+</nav>

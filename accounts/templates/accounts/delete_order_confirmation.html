@@ -1,0 +1,27 @@
+{%extends 'accounts/main.html'%}
+{%load static%}
+{%block content%}
+<div class="card bg-dark">
+	<div class="card-header text-white">
+		Delete Order
+	</div>
+	<div class="card-body text-white">
+		<h3 style="color: yellow;">{{item.customer.name}} ! Cancel your order of " {{item.product.name}} " ?</h3>
+		<h4>Order Details:</h4>
+		<div class="card card-body mb-2" style="color:black">
+			<h6><strong style="color:dimgray;">Order Date & Time </strong>: {{item.date_created}}</h6>
+			<h6><strong style="color:dimgray;">Product Name </strong>: {{item.product.name}}</h6>
+			<h6><strong style="color:dimgray;">Customer Name </strong>: {{item.customer.name}}</h6>
+			<h6><strong style="color:dimgray;">Payment Method </strong>: {{item.pstatus}}</h6>
+			<h6><strong style="color:dimgray;">Delivery Status </strong>: {{item.dstatus}}</h6>
+		</div>
+		<form action="{% url 'delete_order' item.id %}" method="POST">
+			{%csrf_token%}
+			
+			<a class="btn btn-primary" href="{%url 'dashboard_page'%}">Cancel</a>
+			<input class="btn btn-danger" type="submit" name="Confirm" value="Confirm">
+			
+		</form>
+	</div>
+</div>
+{%endblock%}
