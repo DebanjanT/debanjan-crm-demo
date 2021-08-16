@@ -79,7 +79,7 @@ def products(request):
 
     return render(request, 'accounts/products.html', pdcontext)
 
-@staff_member_required(login_url='login')
+@login_required(login_url='login')
 def customer(request, pk):
     customer = Customer.objects.get(id=pk)
     orders = customer.order_set.all()
@@ -90,7 +90,7 @@ def customer(request, pk):
                   'orders': orders, 'total_orders': total_orders}
     return render(request, 'accounts/customer.html', custcontex)
 
-@login_required(login_url='login')
+@staff_member_required(login_url='login')
 def createCustomer(request):
     cid = Customer.objects.all()
     form = customerForm()
@@ -103,7 +103,7 @@ def createCustomer(request):
     context = {'create_customer': form}
     return render(request, 'accounts/customer_form.html', context)
 
-@login_required(login_url='login')
+@staff_member_required(login_url='login')
 def createOrder(request):
     form = orderForm()
     if request.method == 'POST':
@@ -115,7 +115,7 @@ def createOrder(request):
     context = {'createorder_form': form}
     return render(request, 'accounts/order_form.html', context)
 
-@login_required(login_url='login')
+@staff_member_required(login_url='login')
 def updateOrder(request, pk):
     order = Order.objects.get(id=pk)
     form = orderForm(instance=order)
@@ -128,7 +128,7 @@ def updateOrder(request, pk):
     context = {'update_order_form': form}
     return render(request, 'accounts/update_order.html', context)
 
-@login_required(login_url='login')
+@staff_member_required(login_url='login')
 def updateCustomer(request, pk):
     customer = Customer.objects.get(id=pk)
     form = customerForm(instance=customer)
@@ -141,7 +141,7 @@ def updateCustomer(request, pk):
     context = {'update_customer_form': form, 'customer': customer}
     return render(request, 'accounts/update_customer.html', context)
 
-@login_required(login_url='login')
+@staff_member_required(login_url='login')
 def deleteOrder(request, pk):
     item = Order.objects.get(id=pk)
     if request.method == 'POST':
@@ -151,7 +151,7 @@ def deleteOrder(request, pk):
     context = {'item': item}
     return render(request, 'accounts/delete_order_confirmation.html', context)
 
-@login_required(login_url='login')
+@staff_member_required(login_url='login')
 def deleteCustomer(request, pk):
     customer = Customer.objects.get(id=pk)
     orders = customer.order_set.all()
