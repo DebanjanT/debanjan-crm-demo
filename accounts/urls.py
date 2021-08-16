@@ -14,7 +14,7 @@ urlpatterns = [
     path('delete_customer/<str:pk>', views.deleteCustomer, name="delete_customer"),
     # AUTHENTICATION PATH
     path('login', views.loginPage, name="login"),
-    path('register', views.registerPage, name="register"),
+#     path('register', views.registerPage, name="register"),
     path('logout', views.logOut, name="logout"),
 
 
