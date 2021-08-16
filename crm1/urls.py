@@ -18,7 +18,7 @@ from django.urls import path,include
 
     
 urlpatterns = [
-    path('',include('accounts.urls')),
+    path('/',include('accounts.urls')),
     path('core/secure/admin/', admin.site.urls),
 
 ]
