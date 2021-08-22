@@ -35,17 +35,21 @@
 			<hr>
 			<div class="shadow">
 				<a class="btn btn-danger  btn-sm btn-block" href="{% url 'create_order'%}">Create Order</a>
+				<div class="table-responsive">
 				<table class="table table-sm table-striped table-dark">
+					<thead>
 					<tr>
-						<th>Customer</th>
-						<th>Product</th>
-						<th>Date Orderd</th>
-						<th>Dlvry Status</th>
-						<th>Pymnt Status</th>
-						<th>Update</th>
-						<th>Remove</th>
+						<th scope="col">Customer</th>
+						<th scope="col">Product</th>
+						<th scope="col">Date Orderd</th>
+						<th scope="col">Dlvry Status</th>
+						<th scope="col">Pymnt Status</th>
+						<th scope="col">Update</th>
+						<th scope="col">Remove</th>
 					</tr>
+					</thead>
 					{% for i in orders %}
+					<tbody>
 						<tr>
 							
 							<td>{{i.customer.name}}</td>
@@ -57,8 +61,10 @@
 							<td><a class="btn btn-sm btn-danger"href="{% url 'delete_order' i.id%}"><i class="fas fa-trash-alt"></i> Delete</a></td>
 							
 						</tr>
+					</tbody>
 						{%endfor%}
 					</table>
+				</div>
 				</div>
 			</div>
 		</div>
