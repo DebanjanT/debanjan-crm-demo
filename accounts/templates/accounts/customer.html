@@ -51,7 +51,9 @@
 <div class="row">
 	<div class="col-md">
 		<div class="shadow">
+			<div class="table-responsive">
 			<table class="table table-sm table-dark table-striped ">
+				<thead>
 				<tr>
 					<th>Product</th>
 					<th>Category</th>
@@ -61,18 +63,22 @@
 					<th>Update</th>
 					<th>Remove</th>
 				</tr>
+				</thead>
 				{%for order in orders%}
+				<tbody>
 				<tr>
-					<td>{{order.product}}</td>
-					<td>{{order.product.category}}</td>
-					<td>{{order.date_created}}</td>
-					<td>{{order.dstatus}}</td>
-					<td>{{order.pstatus}}</td>
-					<td><a class="btn btn-sm btn-warning" href="{%url 'update_order' order.id %}">Update</a></td>
-					<td><a class="btn btn-sm btn-danger"href="{%url 'delete_order' order.id %}">Delete</a></td>
+					<td scope="col">{{order.product}}</td>
+					<td scope="col">{{order.product.category}}</td>
+					<td scope="col">{{order.date_created}}</td>
+					<td scope="col">{{order.dstatus}}</td>
+					<td scope="col">{{order.pstatus}}</td>
+					<td scope="col"><a class="btn btn-sm btn-warning" href="{%url 'update_order' order.id %}">Update</a></td>
+					<td scope="col"><a class="btn btn-sm btn-danger"href="{%url 'delete_order' order.id %}">Delete</a></td>
 				</tr>
+				</tbody>
 				{%endfor%}
 			</table>
+			</div>
 		</div>
 	</div>
 </div>
